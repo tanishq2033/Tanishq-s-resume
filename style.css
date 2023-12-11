@@ -15,7 +15,7 @@ margin-top: -10px;
     font-weight: bolder;
 }
 body {
-    background-color: #000000 !important; 
+    background-color: #030303 !important; 
     overflow-x: hidden;
    
   
@@ -23,7 +23,7 @@ body {
 .page2{
     display: grid;
     background-color: black;
-    height: 103vh;
+    height: 140vh;
     width: 100%;
     margin-top: 38vh;
     
@@ -67,9 +67,23 @@ body {
 .page3{
     background-color: #000000;
     height: 100vh;
-   
-    
+    position: relative;
+    margin-top: -900px;
 }
+.page3 p {
+    color: azure;
+    word-wrap: normal;
+    font-size: 30px;
+    margin-top: -2000px;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Neuton', serif;
+    font-family: 'Pacifico', cursive;
+}
+
 
 #image-track > .image {
     width: 50vmin;
@@ -79,14 +93,16 @@ body {
     margin-top: 950px;
     padding: 20px;
 }
+
 #image-track {
     display: flex;
     gap: 2vmin;
     left: 50%;
     top: 50%;
-    margin-top: 600px;
+    margin-top: 1000px;
     transform: translate(0%, -50%);
 }
+
 /* Apply this style to the images or any other elements you want to make unselectable */
 .unselectable {
     user-select: none;
@@ -192,35 +208,15 @@ ul{
     display: flex;
     padding: 10px 100px;
     gap: 40px;
-    color: aliceblue;
+    color: rgb(255, 255, 255);
+     text-decoration: none;
 }
 .menu88{
    position: absolute;
    margin-top: 22;
   justify-content: center;
+ 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

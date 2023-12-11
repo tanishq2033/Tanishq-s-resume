@@ -22,37 +22,42 @@ hiddenElements.forEach((el) => {
 
 
 
+
+
 const track = document.getElementById("image-track");
 
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+const handleOnDown = e => {
+  e.preventDefault(); // Prevent default behavior of the link
+  track.dataset.mouseDownAt = e.clientX;
+};
 
 const handleOnUp = () => {
   track.dataset.mouseDownAt = "0";  
   track.dataset.prevPercentage = track.dataset.percentage;
-}
+};
 
 const handleOnMove = e => {
   if(track.dataset.mouseDownAt === "0") return;
-  
+
   const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
         maxDelta = window.innerWidth / 2;
-  
+
   const percentage = (mouseDelta / maxDelta) * -100,
         nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
         nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-  
+
   track.dataset.percentage = nextPercentage;
-  
+
   track.animate({
     transform: `translate(${nextPercentage}%, -50%)`
   }, { duration: 1200, fill: "forwards" });
-  
+
   for(const image of track.getElementsByClassName("image")) {
     image.animate({
       objectPosition: `${100 + nextPercentage}% center`
     }, { duration: 1200, fill: "forwards" });
   }
-}
+};
 
 /* -- Had to add extra lines for touch events -- */
 
@@ -68,8 +73,7 @@ window.onmousemove = e => handleOnMove(e);
 
 window.ontouchmove = e => handleOnMove(e.touches[0]);
 
-
-
+window.onscroll = e=> handleOnMove(e.touches[0]);
 
 
 
@@ -92,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Animation for the second section
   tl.from(".page2 h1, .page2 .tt", { opacity: 0, y: 50, duration: 1 });
 
-  // Animation for the third section
-  tl.from("#image-track .image", { opacity: 0, y: 50, stagger: 0.2, duration: 1 });
+  // // Animation for the third section
+  // tl.from("#image-track .image", { opacity: 0, y: 50, stagger: 0.2, duration: 1 });
 
   // Animation for the fourth section
   tl.from(".page4", { opacity: 0, y: 50, duration: 1 });
@@ -148,3 +152,46 @@ document.querySelector(".page5 h1").onmouseover = event => {
   }, 30);
 }
 
+
+
+
+
+
+
+document.addEventListener('.page3 p', function () {
+  AOS.init();
+});
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all the links inside the menu
+  var links = document.querySelectorAll('.menu88 a');
+
+  // Smooth scroll function
+  function scrollToElement(e) {
+      e.preventDefault();
+
+      var targetId = this.getAttribute('href').substring(1);
+      var targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+          window.scrollTo({
+              top: targetElement.offsetTop,
+              behavior: 'smooth'
+          });
+      }
+  }
+
+  // Add click event listeners to all menu links
+  links.forEach(function (link) {
+      link.addEventListener('click', scrollToElement);
+  });
+});
